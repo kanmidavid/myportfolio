@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Video check</title>
+<style>
+body{background:#0a0a0a;color:#fafafa;font:16px/1.5 system-ui,sans-serif;max-width:860px;margin:30px auto;padding:0 20px}
+h1{color:#22e26b} .row{border:1px solid #2a2a2a;border-radius:12px;padding:12px 16px;margin:10px 0}
+.ok{border-color:#22e26b}.bad{border-color:#ff5c5c}
+code{background:#1a1a1a;padding:2px 6px;border-radius:6px}
+b.g{color:#22e26b}b.r{color:#ff5c5c}small{color:#9a9a9a;display:block}
+</style></head><body>
+<h1>Video check</h1>
+<p>Each line tests one file the site expects. Green = the browser can play it.</p>
+<div id="out"></div>
+<script src="data.js"></script>
+<script>
+const out=document.getElementById("out");
+const items=[{title:"Showreel",video:window.SITE.showreel}].concat(window.PROJECTS);
+items.forEach(p=>{
+  const row=document.createElement("div");row.className="row";
+  row.innerHTML=`<b>${p.title}</b><small>Expected file: <code>${p.video}</code></small><span>Testing...</span>`;
+  out.appendChild(row);
+  const v=document.createElement("video");v.preload="metadata";v.muted=true;
+  const s=row.querySelector("span");
+  v.onloadedmetadata=()=>{row.classList.add("ok");
+    s.innerHTML=`<b class="g">Plays.</b> ${v.videoWidth}×${v.videoHeight}, ${Math.round(v.duration)}s`;};
+  v.onerror=()=>{row.classList.add("bad");
+    s.innerHTML=`<b class="r">Cannot load.</b> Either the file is missing or misnamed in <code>assets/videos</code>, or it was exported with a codec browsers cannot play (needs H.264 + AAC).`;};
+  v.src=p.video;
+});
+</script></body></html>
