@@ -17,7 +17,7 @@ window.SITE = {
   studio: "Kavi Studios",
   tagline: "I make things move, sell, and stop thumbs.",
   sub: "Motion designer · AI video creator · UGC & DTC video editor",
-  email: "oyekanmiadewumi200@gmail.com",
+  email: "kanmi@kavistudios.co",
   links: {
     instagram: "https://www.instagram.com/oyekanmidavid5",
     linkedin: "https://www.linkedin.com/in/oyekanmi-david-3757a3343",
@@ -187,3 +187,22 @@ window.PROJECTS = [
     brief: "A spec product-led ad for ClickUp's AI agent, which helps draft spreadsheets, organise processes and write reports so teams spend less time on busywork. Edited to put the benefit up front, show the product in action and end on a clear call to action, made as a test edit."
   }
 ];
+
+/* ============== CUSTOM PICKS (tailored pages for applications) ==============
+   Each pick makes its own page. Add one: copy ai-performance.html, change
+   data-pick, then add a block here. items = project titles, in the order shown. */
+window.PICKS = {
+  "ai-performance": {
+    title: "AI Video & Performance Ads",
+    blurb: "A focused selection: UGC and DTC ad edits for paid social, plus AI-animated films and ads made with Higgsfield, Kling and Seedance.",
+    items: [
+      "ClickUp Brain: DTC Ad",
+      "ClickUp: UGC Ad",
+      "BlossomUp: UGC Ad",
+      "NALA Ghana: Animated Ad",
+      "NALA Nigeria: Animated Ad",
+      "Not Again!",
+      "Making of a Nala Ad: Breakdown Reel"
+    ]
+  }
+};
