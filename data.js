@@ -7,7 +7,7 @@
    2. (Optional) drop a thumbnail into assets/posters/ (jpg/png) and set poster
    3. Copy one block in PROJECTS below, change the fields, save.
 
-   cat must be one of: "motion" | "ai" | "ugc" | "dtc"
+   cat must be one of: "motion" | "ai" | "aiugc" | "ugc" | "dtc"
    Video shape (vertical / landscape) is detected automatically.
    File names must match EXACTLY, including capitals and spelling.
    ============================================================ */
@@ -32,7 +32,7 @@ window.SITE = {
   ],
   stats: [
     { n: "~7", l: "years editing" },
-    { n: "4", l: "disciplines, 1 editor" },
+    { n: "5", l: "disciplines, 1 editor" },
     { n: "Africa + Global", l: "brands served" }
   ]
 };
@@ -46,12 +46,16 @@ window.CATS = {
     page: "ai.html", num: "02", title: "AI Videos",
     blurb: "AI-native, human-directed. Higgsfield, Kling, Seedance and Nano Banana Pro."
   },
+  aiugc: {
+    page: "ai-ugc.html", num: "03", title: "AI UGC",
+    blurb: "UGC-style ads with AI-generated creators. Scripted, directed and edited by hand."
+  },
   ugc: {
-    page: "ugc.html", num: "03", title: "UGC Edits",
+    page: "ugc.html", num: "04", title: "UGC Edits",
     blurb: "Creator footage cut for the thumb-stop. Hooks, captions, pacing, proof."
   },
   dtc: {
-    page: "dtc.html", num: "04", title: "DTC Videos",
+    page: "dtc.html", num: "05", title: "DTC Videos",
     blurb: "Product-first ads and brand films built to convert on Meta and TikTok."
   }
 };
@@ -150,6 +154,19 @@ window.PROJECTS = [
     brief: "\"Not Again!\" is a short AI-generated film from Kavi Studios Originals. It was built shot by shot with locked characters and a consistent look, then cut, scored and graded in-house. It shows our approach: AI-native, human-directed."
   },
 
+  /* ========================== AI UGC ========================== */
+  {
+    cat: "aiugc",
+    title: "Faceted: AI UGC Ad",
+    client: "Faceted (my own product)",
+    year: "2026",
+    role: "Creative director, AI video creator and editor",
+    tools: ["Higgsfield", "Seedance 2.0", "Nano Banana Pro", "CapCut"],
+    video: "assets/videos/faceted-aiugc.mp4",
+    poster: "",
+    brief: "A UGC-style ad for Faceted, my own skincare skin-type guide, made without a camera crew or a hired creator. I designed an AI creator, wrote the script around a hook, a short proof of how the quiz works and a clear call to action, then generated the selfie-style shots and B-roll with Seedance and Nano Banana Pro. Cut by hand for native pacing, with the product shown exactly as it is. The creator is AI-generated and fictional."
+  },
+
   /* ========================== UGC EDITS ========================== */
   {
     cat: "ugc",
@@ -197,6 +214,7 @@ window.PICKS = {
     blurb: "A focused selection: UGC and DTC ad edits for paid social, plus AI-animated films and ads made with Higgsfield, Kling and Seedance.",
     items: [
       "ClickUp Brain: DTC Ad",
+      "Faceted: AI UGC Ad",
       "ClickUp: UGC Ad",
       "BlossomUp: UGC Ad",
       "NALA Ghana: Animated Ad",

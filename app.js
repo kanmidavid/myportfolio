@@ -1,7 +1,7 @@
 (function () {
   const S = window.SITE, C = window.CATS, P = window.PROJECTS;
   const body = document.body;
-  const page = body.dataset.page || "home"; // home | motion | ai | ugc | dtc
+  const page = body.dataset.page || "home"; // home | motion | ai | aiugc | ugc | dtc
   const esc = (s) => String(s || "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const ratioCSS = (r) => (r || "16:9").replace(":", " / ");
   const isTall = (r) => { const [w, h] = (r || "16:9").split(":").map(Number); return h > w; };
@@ -43,7 +43,7 @@
   if (page === "home") {
     const track = document.getElementById("track");
     if (track) {
-      const words = ["Motion Design", "AI Video", "UGC Edits", "DTC Ads", "Brand Films", "Social Ads"];
+      const words = ["Motion Design", "AI Video", "AI UGC", "UGC Edits", "DTC Ads", "Brand Films", "Social Ads"];
       const run = words.concat(words).map((w) => `<span>${w}</span><span>✦</span>`).join("");
       track.innerHTML = run + run;
     }
@@ -97,11 +97,13 @@
 
   /* ---------- CATEGORY PAGE ---------- */
   let list = [];
-  if (C[page]) {
+  const pick = page === "pick" ? (window.PICKS || {})[body.dataset.pick] : null;
+  if (C[page] || pick) {
     const c = C[page];
-    list = byCat(page);
-    document.getElementById("head").innerHTML = `<div class="wrap">
-      <span class="num mono">${c.num} / 04</span><h1>${c.title}</h1><p>${c.blurb}</p></div>`;
+    list = pick ? pick.items.map((t) => P.find((p) => p.title === t)).filter(Boolean) : byCat(page);
+    document.getElementById("head").innerHTML = pick
+      ? `<div class="wrap"><span class="num mono">Selected work</span><h1>${esc(pick.title)}</h1><p>${esc(pick.blurb)}</p></div>`
+      : `<div class="wrap"><span class="num mono">${c.num} / 0${Object.keys(C).length}</span><h1>${c.title}</h1><p>${c.blurb}</p></div>`;
     const grid = document.getElementById("grid");
     grid.innerHTML = list.length ? list.map((p, i) => `
       <button class="card" data-i="${i}" aria-label="Play ${esc(p.title)}">
