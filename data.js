@@ -166,6 +166,39 @@ window.PROJECTS = [
     poster: "",
     brief: "A UGC-style ad for Faceted, my own skincare skin-type guide, made without a camera crew or a hired creator. I designed an AI creator, wrote the script around a hook, a short proof of how the quiz works and a clear call to action, then generated the selfie-style shots and B-roll with Seedance and Nano Banana Pro. Cut by hand for native pacing, with the product shown exactly as it is. The creator is AI-generated and fictional."
   },
+  {
+    cat: "aiugc",
+    title: "Vitamin C Serum: AI UGC Ad",
+    client: "Sample concept (unbranded product)",
+    year: "2026",
+    role: "Creative director, AI video creator and editor",
+    tools: ["Higgsfield", "Seedance 2.0", "Nano Banana Pro", "CapCut"],
+    video: "assets/videos/skincare-aiugc.mp4",
+    poster: "",
+    brief: "A sample skincare UGC ad built to test how real an AI creator can feel. I wrote a simple hook-and-routine script, designed the creator and the product, and generated a selfie-style talking shot plus self-filmed B-roll for texture and proof. Cut by hand with natural jump cuts and captions. The creator and the unbranded product are AI-generated and fictional."
+  },
+  {
+    cat: "aiugc",
+    title: "Greens Powder: AI UGC Ad",
+    client: "Sample concept (unbranded product)",
+    year: "2026",
+    role: "Creative director, AI video creator and editor",
+    tools: ["Higgsfield", "Seedance 2.0", "Nano Banana Pro", "CapCut"],
+    video: "assets/videos/greens-powder-aiugc.mp4",
+    poster: "",
+    brief: "A sample wellness UGC ad in a relaxed kitchen setting. I scripted a relatable morning-routine hook, generated the creator and the product, and directed a natural handheld talking shot, then edited it for native pacing and captions. Claims are kept mild on purpose. The creator and the unbranded product are AI-generated and fictional."
+  },
+  {
+    cat: "aiugc",
+    title: "Oversized Hoodie: AI UGC Ad",
+    client: "Sample concept (unbranded product)",
+    year: "2026",
+    role: "Creative director, AI video creator and editor",
+    tools: ["Higgsfield", "Seedance 2.0", "Nano Banana Pro", "CapCut"],
+    video: "assets/videos/hoodie-aiugc.mp4",
+    poster: "",
+    brief: "A sample fashion UGC ad filmed mirror-selfie style with an AI-generated male creator. I wrote a short review-style script around a common complaint, then directed the shot and edited it to feel like a real customer clip. The creator and the plain, unbranded hoodie are AI-generated and fictional."
+  },
 
   /* ========================== UGC EDITS ========================== */
   {
@@ -194,6 +227,28 @@ window.PROJECTS = [
   /* ========================== DTC VIDEOS ========================== */
   {
     cat: "dtc",
+    title: "Water Dispenser: Pidgin DTC Ad",
+    client: "Water dispenser brand (name withheld)",
+    year: "2025",
+    role: "Scriptwriter, voice-over artist and video editor",
+    tools: ["CapCut"],
+    video: "assets/videos/water-dispenser-pidgin-dtc.mp4",
+    poster: "",
+    brief: "A short-form ad for a water dispenser brand, made for a specific local audience. I wrote the hook and script in Pidgin and recorded the voice-over myself, so it feels native to the people it is meant for, and the edit runs on a trending sound. The footage changes about every 3 seconds to keep the pacing tight, and the call to action is clear and explicit. It reached 927K views on TikTok organically, with 867 shares and 1,309 saves. That is organic reach, not paid ad data."
+  },
+  {
+    cat: "dtc",
+    title: "Water Dispenser: English DTC Ad",
+    client: "Water dispenser brand (name withheld)",
+    year: "2025",
+    role: "Scriptwriter, voice-over artist and video editor",
+    tools: ["CapCut"],
+    video: "assets/videos/water-dispenser-english-dtc.mp4",
+    poster: "",
+    brief: "A second ad for the same water dispenser brand, kept in plain English for a broader audience. I wrote the hook and script, recorded the voice-over and edited it with tight pacing: a new shot about every 3 seconds, the product shown clearly, and an obvious, explicit call to action at the end."
+  },
+  {
+    cat: "dtc",
     title: "ClickUp Brain: DTC Ad",
     client: "ClickUp",
     year: "2026",
@@ -213,8 +268,13 @@ window.PICKS = {
     title: "AI Video & Performance Ads",
     blurb: "A focused selection: UGC and DTC ad edits for paid social, plus AI-animated films and ads made with Higgsfield, Kling and Seedance.",
     items: [
+      "Water Dispenser: Pidgin DTC Ad",
+      "Water Dispenser: English DTC Ad",
       "ClickUp Brain: DTC Ad",
       "Faceted: AI UGC Ad",
+      "Vitamin C Serum: AI UGC Ad",
+      "Greens Powder: AI UGC Ad",
+      "Oversized Hoodie: AI UGC Ad",
       "ClickUp: UGC Ad",
       "BlossomUp: UGC Ad",
       "NALA Ghana: Animated Ad",
