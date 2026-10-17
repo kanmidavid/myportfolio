@@ -48,6 +48,19 @@
       track.innerHTML = run + run;
     }
 
+    /* trusted by */
+    const trusted = document.getElementById("trusted"), logos = document.getElementById("logos");
+    if (trusted && logos && Array.isArray(window.TRUSTED) && window.TRUSTED.length) {
+      logos.innerHTML = window.TRUSTED.map((t) => {
+        const name = esc(t.name);
+        const inner = t.logo
+          ? `<img src="${esc(t.logo)}" alt="${name}" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'wm',textContent:this.alt}))">`
+          : `<span class="wm">${name}</span>`;
+        return t.url ? `<a class="logo-item" href="${esc(t.url)}" target="_blank" rel="noopener" title="${name}">${inner}</a>` : `<div class="logo-item" title="${name}">${inner}</div>`;
+      }).join("");
+      trusted.hidden = false;
+    }
+
     const reel = document.getElementById("reel");
     if (reel && S.showreel) {
       const v = reel.querySelector("video");

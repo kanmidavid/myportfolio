@@ -166,3 +166,14 @@ footer small{color:var(--dim)}
   .nav ul{width:100%}
 }
 @media(prefers-reduced-motion:reduce){.marquee .track,.hello i{animation:none}}
+
+/* trusted by */
+.trusted{padding:46px 0 6px}
+.trusted[hidden]{display:none}
+.trusted .eyebrow{margin-bottom:22px}
+.logos{display:flex;flex-wrap:wrap;align-items:center;gap:22px 46px}
+.logo-item{display:flex;align-items:center;justify-content:center;height:40px;opacity:.72;transition:opacity .2s}
+.logo-item:hover{opacity:1}
+.logo-item img{max-height:40px;max-width:150px;width:auto;object-fit:contain;filter:brightness(0) invert(1)}
+.logo-item .wm{font-weight:700;font-size:1.15rem;letter-spacing:-.02em;color:#e8e8e8}
+@media (max-width:700px){.logos{gap:18px 30px}.logo-item img{max-height:32px;max-width:120px}}

@@ -37,6 +37,24 @@ window.SITE = {
   ]
 };
 
+/* ============== TRUSTED BY (home page logo strip) ==============
+   Put each logo in assets/logos/ (PNG or SVG, transparent background; it is shown in white).
+   If a logo file is missing, the company name shows as text instead.
+   Only list real clients you have permission to show. Not spec work.
+   To add one: copy a line, change name and logo. Optional: url: "https://..." */
+window.TRUSTED = [
+  { name: "ASC",             logo: "assets/logos/asc.png" },
+  { name: "Jemirae",         logo: "assets/logos/jemirae.png" },
+  { name: "Kava TV",         logo: "assets/logos/kava-tv.png" },
+  { name: "Wellat",          logo: "assets/logos/wellat.png" },
+  { name: "iSpace",          logo: "assets/logos/ispace.png" },
+  { name: "Trendify Africa", logo: "assets/logos/trendify-africa.png" },
+  { name: "NALA",            logo: "assets/logos/nala.png" },
+  { name: "Translo AI",      logo: "assets/logos/translo-ai.png" },
+  { name: "Kira AI",         logo: "assets/logos/kira-ai.png" },
+  { name: "Locked In HQ",    logo: "assets/logos/locked-in-hq.png" }
+];
+
 window.CATS = {
   motion: {
     page: "motion.html", num: "01", title: "Motion Design",
