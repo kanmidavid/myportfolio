@@ -51,7 +51,7 @@ window.TRUSTED = [
   { name: "Trendify Africa", logo: "assets/logos/trendify-africa.png" },
   { name: "NALA",            logo: "assets/logos/nala.png" },
   { name: "Translo AI",      logo: "assets/logos/translo-ai.png" },
-  { name: "Kira AI",         logo: "assets/logos/kira-ai.png" },
+  { name: "Kira AI",         logo: "assets/logos/kira-ai-2.png" },
   { name: "Locked In HQ",    logo: "assets/logos/locked-in-hq.png" }
 ];
 
