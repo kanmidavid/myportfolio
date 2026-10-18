@@ -19,7 +19,7 @@
     const links = Object.entries(C).map(([k, c]) => `<li><a href="${c.page}" class="${page === k ? "on" : ""}">${c.title}</a></li>`).join("");
     nav.innerHTML = `<div class="wrap">
       <a class="logo" href="index.html">Kanmi David<b>.</b></a>
-      <ul><li><a href="index.html" class="${page === "home" ? "on" : ""}">Home</a></li>${links}<li><a class="cta" href="#contact">Contact</a></li></ul>
+      <ul><li><a href="index.html" class="${page === "home" ? "on" : ""}">Home</a></li>${links}<li><a href="results.html" class="${page === "results" ? "on" : ""}">Results</a></li><li><a class="cta" href="#contact">Contact</a></li></ul>
     </div>`;
   }
 
