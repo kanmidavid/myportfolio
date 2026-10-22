@@ -31,9 +31,9 @@ window.SITE = {
     "Higgsfield", "Kling AI", "Seedance", "Nano Banana Pro", "CapCut"
   ],
   stats: [
-    { n: "~7", l: "years editing" },
-    { n: "5", l: "disciplines, 1 editor" },
-    { n: "Africa + Global", l: "brands served" }
+    { n: "927K", l: "organic views on one DTC ad" },
+    { n: "£40K+", l: "paid ad spend behind my creative" },
+    { n: "~7", l: "years editing" }
   ]
 };
 
