@@ -7,7 +7,25 @@
   const isTall = (r) => { const [w, h] = (r || "16:9").split(":").map(Number); return h > w; };
   const byCat = (k) => P.filter((p) => p.cat === k);
 
-  /* cursor glow */
+  /* theme: light by default, dark on request, remembered per visitor */
+  const root = document.documentElement;
+  const KEY = "kd-theme";
+  const readTheme = () => { try { const t = localStorage.getItem(KEY); if (t === "dark" || t === "light") return t; } catch (e) {} return "light"; };
+  const setTheme = (t, save) => {
+    root.dataset.theme = t;
+    if (save) { try { localStorage.setItem(KEY, t); } catch (e) {} }
+    const m = document.querySelector('meta[name="theme-color"]');
+    if (m) m.setAttribute("content", t === "dark" ? "#0a0a0a" : "#f6f5f1");
+    const b = document.getElementById("theme-toggle");
+    if (b) {
+      b.setAttribute("aria-pressed", String(t === "dark"));
+      b.setAttribute("aria-label", t === "dark" ? "Switch to light mode" : "Switch to dark mode");
+      b.title = t === "dark" ? "Light mode" : "Dark mode";
+    }
+  };
+  setTheme(readTheme(), false);
+
+  /* cursor glow (visible in dark mode only) */
   const glow = document.createElement("div");
   glow.className = "glow";
   body.prepend(glow);
@@ -19,8 +37,14 @@
     const links = Object.entries(C).map(([k, c]) => `<li><a href="${c.page}" class="${page === k ? "on" : ""}">${c.title}</a></li>`).join("");
     nav.innerHTML = `<div class="wrap">
       <a class="logo" href="index.html">Kanmi David<b>.</b></a>
-      <ul><li><a href="index.html" class="${page === "home" ? "on" : ""}">Home</a></li>${links}<li><a href="results.html" class="${page === "results" ? "on" : ""}">Results</a></li><li><a class="cta" href="#contact">Contact</a></li></ul>
+      <ul>${links}<li><a class="cta" href="#contact">Contact</a></li></ul>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark mode">
+        <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z"/></svg>
+        <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
     </div>`;
+    document.getElementById("theme-toggle").addEventListener("click", () => setTheme(root.dataset.theme === "dark" ? "light" : "dark", true));
+    setTheme(root.dataset.theme, false);
   }
 
   /* footer */
@@ -43,7 +67,7 @@
   if (page === "home") {
     const track = document.getElementById("track");
     if (track) {
-      const words = ["Motion Design", "AI Video", "AI UGC", "UGC Edits", "DTC Ads", "Brand Films", "Social Ads"];
+      const words = ["Talking Head Edits", "Event Recaps", "Reels", "UGC Edits", "DTC Ads", "Motion Design", "AI Video", "AI UGC"];
       const run = words.concat(words).map((w) => `<span>${w}</span><span>✦</span>`).join("");
       track.innerHTML = run + run;
     }
