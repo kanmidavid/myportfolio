@@ -7,7 +7,7 @@
    2. (Optional) drop a thumbnail into assets/posters/ (jpg/png) and set poster
    3. Copy one block in PROJECTS below, change the fields, save.
 
-   cat must be one of: "motion" | "ai" | "aiugc" | "ugc" | "dtc"
+   cat must be one of: "talking" | "events" | "ugc" | "dtc" | "motion" | "ai"
    Video shape (vertical / landscape) is detected automatically.
    File names must match EXACTLY, including capitals and spelling.
    ============================================================ */
@@ -16,8 +16,8 @@ window.SITE = {
   name: "Kanmi David",
   studio: "Kavi Studios",
   tagline: "I make things move, sell, and stop thumbs.",
-  sub: "Motion designer · AI video creator · UGC & DTC video editor",
-  email: "kanmi@kavistudios.co",
+  sub: "Professional video editor · motion designer · AI video creator",
+  email: "oyekanmiadewumi200@gmail.com",
   links: {
     instagram: "https://www.instagram.com/oyekanmidavid5",
     linkedin: "https://www.linkedin.com/in/oyekanmi-david-3757a3343",
@@ -27,58 +27,103 @@ window.SITE = {
   },
   showreel: "assets/videos/showreel.mp4", // optional: hidden if the file is missing
   tools: [
-    "After Effects", "Cinema 4D", "Blender", "Premiere Pro", "DaVinci Resolve",
-    "Higgsfield", "Kling AI", "Seedance", "Nano Banana Pro", "CapCut"
+    "CapCut", "After Effects", "Premiere Pro", "DaVinci Resolve", "Cinema 4D", "Blender",
+    "Higgsfield", "Kling AI", "Seedance", "Nano Banana Pro"
   ],
   stats: [
-    { n: "927K", l: "organic views on one DTC ad" },
-    { n: "£40K+", l: "paid ad spend behind my creative" },
-    { n: "~7", l: "years editing" }
+    { n: "~7", l: "years editing" },
+    { n: "6", l: "specialities, 1 editor" },
+    { n: "Africa + Global", l: "brands served" }
   ]
 };
 
-/* ============== TRUSTED BY (home page logo strip) ==============
-   Put each logo in assets/logos/ (PNG or SVG, transparent background; it is shown in white).
-   If a logo file is missing, the company name shows as text instead.
-   Only list real clients you have permission to show. Not spec work.
-   To add one: copy a line, change name and logo. Optional: url: "https://..." */
-window.TRUSTED = [
-  { name: "ASC",             logo: "assets/logos/asc.png" },
-  { name: "Jemirae",         logo: "assets/logos/jemirae.png" },
-  { name: "Kava TV",         logo: "assets/logos/kava-tv.png" },
-  { name: "Wellat",          logo: "assets/logos/wellat.png" },
-  { name: "iSpace",          logo: "assets/logos/ispace.png" },
-  { name: "Trendify Africa", logo: "assets/logos/trendify-africa.png" },
-  { name: "NALA",            logo: "assets/logos/nala.png" },
-  { name: "Translo AI",      logo: "assets/logos/translo-ai.png" },
-  { name: "Kira AI",         logo: "assets/logos/kira-ai-2.png" },
-  { name: "Locked In HQ",    logo: "assets/logos/locked-in-hq.png" }
-];
-
 window.CATS = {
-  motion: {
-    page: "motion.html", num: "01", title: "Motion Design",
-    blurb: "After Effects, Cinema 4D and Blender. Graphics that move on purpose."
+  talking: {
+    page: "talking-head.html", num: "01", title: "Talking Head",
+    blurb: "Face-to-camera content cut to hold attention. Tight pacing, stylised captions and motion graphics that make the message land."
   },
-  ai: {
-    page: "ai.html", num: "02", title: "AI Videos",
-    blurb: "AI-native, human-directed. Higgsfield, Kling, Seedance and Nano Banana Pro."
-  },
-  aiugc: {
-    page: "ai-ugc.html", num: "03", title: "AI UGC",
-    blurb: "UGC-style ads with AI-generated creators. Scripted, directed and edited by hand."
+  events: {
+    page: "event-recaps.html", num: "02", title: "Event Recaps",
+    blurb: "Fast, cinematic recaps that carry the energy of the day. Cut for pace, finished with motion graphics and VFX."
   },
   ugc: {
-    page: "ugc.html", num: "04", title: "UGC Edits",
+    page: "ugc.html", num: "03", title: "UGC Edits",
     blurb: "Creator footage cut for the thumb-stop. Hooks, captions, pacing, proof."
   },
   dtc: {
-    page: "dtc.html", num: "05", title: "DTC Videos",
+    page: "dtc.html", num: "04", title: "DTC Videos",
     blurb: "Product-first ads and brand films built to convert on Meta and TikTok."
+  },
+  motion: {
+    page: "motion.html", num: "05", title: "Motion Design",
+    blurb: "After Effects, Cinema 4D and Blender. Graphics that move on purpose."
+  },
+  ai: {
+    page: "ai.html", num: "06", title: "AI Videos",
+    blurb: "AI-native, human-directed. Higgsfield, Kling, Seedance and Nano Banana Pro."
   }
 };
 
 window.PROJECTS = [
+
+  /* ===================== TALKING HEAD ===================== */
+  {
+    cat: "talking",
+    title: "Know Your Rep, Ep. 1: Who Is Your Rep?",
+    client: "Michael Adesanya (MLK)",
+    year: "2026",
+    role: "Video editor and motion designer",
+    tools: ["CapCut", "After Effects"],
+    video: "assets/videos/kyr-ep1-talking-head.mp4",
+    poster: "",
+    brief: "Episode one of Know Your Rep (KYR), a 10-part civic-education talking-head series fronted by Michael Adesanya, who is running for public office. The episode opens on street interviews asking people who their representative is, then moves into a direct-to-camera explainer on what a representative does and how voters choose one. Major cuts were made in CapCut, then the piece was finished in After Effects with motion graphics, VFX and stylised captions, including animated on-screen text for the key facts and a Yoruba line that speaks to the local audience."
+  },
+  {
+    cat: "talking",
+    title: "Know Your Rep, Ep. 5: The Budget, Whose Money Is It?",
+    client: "Michael Adesanya (MLK)",
+    year: "2026",
+    role: "Video editor and motion designer",
+    tools: ["CapCut", "After Effects"],
+    video: "assets/videos/kyr-ep5-talking-head.mp4",
+    poster: "",
+    brief: "Episode five of Know Your Rep (KYR). It opens with a naira note in hand and a simple idea: this is your money. The episode then explains where Nigeria's budget money comes from and how the National Assembly approves it. Cut in CapCut for a clean, fast rhythm, then finished in After Effects with motion graphics, VFX and stylised captions, including an animated flow that traces the money from taxes to the budget to the projects it funds."
+  },
+  {
+    cat: "talking",
+    title: "Adewale Student Conference: Grand Finale Announcement",
+    client: "Adewale Student Conference",
+    year: "2026",
+    role: "Video editor and motion designer",
+    tools: ["CapCut", "After Effects"],
+    video: "assets/videos/asc-grand-finale-announcement.mp4",
+    poster: "",
+    brief: "An announcement video for the Grand Finale of the Adewale Students' Conference (ASC), the STEM competition for secondary school students across Ogun State. In its sixth year, the finale moves to Abeokuta for the first time, to the June 12 Cultural Center on 19 November, under the theme \"The Gateway Generation: Engineering the Future of Ogun State\". Built for impact: a deliberate hook, fast captions with wiggle effects, speed ramps and 3D text VFX. Major cuts were made in CapCut, then the piece was finished in After Effects."
+  },
+
+  /* ======================= EVENT RECAPS ======================= */
+  {
+    cat: "events",
+    title: "Adewale Student Conference: Day 1 Recap",
+    client: "Adewale Student Conference",
+    year: "2026",
+    role: "Video editor and motion designer",
+    tools: ["CapCut", "After Effects"],
+    video: "assets/videos/adewale-conference-day1-recap.mp4",
+    poster: "",
+    brief: "A recap of Day 1 of the Adewale Student Conference, a students' competition and scholarship conference held in Shagamu, Ogun State, in October 2026 and sponsored by Gala (UAC Foods). The footage was cut for pace and energy in CapCut, then finished in After Effects with motion graphics, VFX and stylised captions."
+  },
+  {
+    cat: "events",
+    title: "Adewale Student Conference: Day 3 Recap",
+    client: "Adewale Student Conference",
+    year: "2026",
+    role: "Video editor and motion designer",
+    tools: ["CapCut", "After Effects"],
+    video: "assets/videos/adewale-conference-day3-recap.mp4",
+    poster: "",
+    brief: "A recap of Day 3 of the Adewale Student Conference, the students' competition and scholarship conference held in Shagamu, Ogun State, in October 2026 and sponsored by Gala (UAC Foods). Cut in CapCut to keep the day's momentum, then finished in After Effects with motion graphics, VFX and stylised captions."
+  },
 
   /* ===================== MOTION DESIGN ===================== */
   {
@@ -172,53 +217,29 @@ window.PROJECTS = [
     brief: "\"Not Again!\" is a short AI-generated film from Kavi Studios Originals. It was built shot by shot with locked characters and a consistent look, then cut, scored and graded in-house. It shows our approach: AI-native, human-directed."
   },
 
-  /* ========================== AI UGC ========================== */
-  {
-    cat: "aiugc",
-    title: "Faceted: AI UGC Ad",
-    client: "Faceted (my own product)",
-    year: "2026",
-    role: "Creative director, AI video creator and editor",
-    tools: ["Higgsfield", "Seedance 2.0", "Nano Banana Pro", "CapCut"],
-    video: "assets/videos/faceted-aiugc.mp4",
-    poster: "",
-    brief: "A UGC-style ad for Faceted, my own skincare skin-type guide, made without a camera crew or a hired creator. I designed an AI creator, wrote the script around a hook, a short proof of how the quiz works and a clear call to action, then generated the selfie-style shots and B-roll with Seedance and Nano Banana Pro. Cut by hand for native pacing, with the product shown exactly as it is. The creator is AI-generated and fictional."
-  },
-  {
-    cat: "aiugc",
-    title: "Vitamin C Serum: AI UGC Ad",
-    client: "Sample concept (unbranded product)",
-    year: "2026",
-    role: "Creative director, AI video creator and editor",
-    tools: ["Higgsfield", "Seedance 2.0", "Nano Banana Pro", "CapCut"],
-    video: "assets/videos/skincare-aiugc.mp4",
-    poster: "",
-    brief: "A sample skincare UGC ad built to test how real an AI creator can feel. I wrote a simple hook-and-routine script, designed the creator and the product, and generated a selfie-style talking shot plus self-filmed B-roll for texture and proof. Cut by hand with natural jump cuts and captions. The creator and the unbranded product are AI-generated and fictional."
-  },
-  {
-    cat: "aiugc",
-    title: "Greens Powder: AI UGC Ad",
-    client: "Sample concept (unbranded product)",
-    year: "2026",
-    role: "Creative director, AI video creator and editor",
-    tools: ["Higgsfield", "Seedance 2.0", "Nano Banana Pro", "CapCut"],
-    video: "assets/videos/greens-powder-aiugc.mp4",
-    poster: "",
-    brief: "A sample wellness UGC ad in a relaxed kitchen setting. I scripted a relatable morning-routine hook, generated the creator and the product, and directed a natural handheld talking shot, then edited it for native pacing and captions. Claims are kept mild on purpose. The creator and the unbranded product are AI-generated and fictional."
-  },
-  {
-    cat: "aiugc",
-    title: "Oversized Hoodie: AI UGC Ad",
-    client: "Sample concept (unbranded product)",
-    year: "2026",
-    role: "Creative director, AI video creator and editor",
-    tools: ["Higgsfield", "Seedance 2.0", "Nano Banana Pro", "CapCut"],
-    video: "assets/videos/hoodie-aiugc.mp4",
-    poster: "",
-    brief: "A sample fashion UGC ad filmed mirror-selfie style with an AI-generated male creator. I wrote a short review-style script around a common complaint, then directed the shot and edited it to feel like a real customer clip. The creator and the plain, unbranded hoodie are AI-generated and fictional."
-  },
-
   /* ========================== UGC EDITS ========================== */
+  {
+    cat: "ugc",
+    title: "Thinbi NAD+: UGC Test Edit",
+    client: "Thinbi (test edit)",
+    year: "2026",
+    role: "Video editor (test edit)",
+    tools: ["CapCut"],
+    video: "assets/videos/thinbi-nad-ugc.mp4",
+    poster: "",
+    brief: "A test edit for Thinbi, a supplement brand, built around its NAD+ capsule: a daily capsule that combines resveratrol and urolithin A with 12 actives in total, positioned around cellular energy and mitochondrial support. Cut in a native, creator-style format with a strong opening hook, captions and tight pacing so the product's key points land inside a single scroll."
+  },
+  {
+    cat: "ugc",
+    title: "Supplement: AI UGC Ad",
+    client: "Spec edit",
+    year: "2026",
+    role: "AI video creator and editor (spec edit)",
+    tools: ["Higgsfield", "Seedance", "Nano Banana Pro", "CapCut"],
+    video: "assets/videos/supplement-ai-ugc.mp4",
+    poster: "",
+    brief: "A spec AI UGC ad for a supplement brand, made as a test edit. An AI-generated creator speaks straight to camera with the product in hand, built around a strong opening hook, bold captions and tight pacing in a native, creator-style format."
+  },
   {
     cat: "ugc",
     title: "BlossomUp: UGC Ad",
@@ -245,28 +266,6 @@ window.PROJECTS = [
   /* ========================== DTC VIDEOS ========================== */
   {
     cat: "dtc",
-    title: "Water Dispenser: Pidgin DTC Ad",
-    client: "Water dispenser brand (name withheld)",
-    year: "2025",
-    role: "Scriptwriter, voice-over artist and video editor",
-    tools: ["CapCut"],
-    video: "assets/videos/water-dispenser-pidgin-dtc.mp4",
-    poster: "",
-    brief: "A short-form ad for a water dispenser brand, made for a specific local audience. I wrote the hook and script in Pidgin and recorded the voice-over myself, so it feels native to the people it is meant for, and the edit runs on a trending sound. The footage changes about every 3 seconds to keep the pacing tight, and the call to action is clear and explicit. It reached 927K views on TikTok organically, with 867 shares and 1,309 saves. That is organic reach, not paid ad data."
-  },
-  {
-    cat: "dtc",
-    title: "Water Dispenser: English DTC Ad",
-    client: "Water dispenser brand (name withheld)",
-    year: "2025",
-    role: "Scriptwriter, voice-over artist and video editor",
-    tools: ["CapCut"],
-    video: "assets/videos/water-dispenser-english-dtc.mp4",
-    poster: "",
-    brief: "A second ad for the same water dispenser brand, kept in plain English for a broader audience. I wrote the hook and script, recorded the voice-over and edited it with tight pacing: a new shot about every 3 seconds, the product shown clearly, and an obvious, explicit call to action at the end."
-  },
-  {
-    cat: "dtc",
     title: "ClickUp Brain: DTC Ad",
     client: "ClickUp",
     year: "2026",
@@ -277,28 +276,3 @@ window.PROJECTS = [
     brief: "A spec product-led ad for ClickUp's AI agent, which helps draft spreadsheets, organise processes and write reports so teams spend less time on busywork. Edited to put the benefit up front, show the product in action and end on a clear call to action, made as a test edit."
   }
 ];
-
-/* ============== CUSTOM PICKS (tailored pages for applications) ==============
-   Each pick makes its own page. Add one: copy ai-performance.html, change
-   data-pick, then add a block here. items = project titles, in the order shown. */
-window.PICKS = {
-  "ai-performance": {
-    title: "AI Video & Performance Ads",
-    blurb: "A focused selection: UGC and DTC ad edits for paid social, plus AI-animated films and ads made with Higgsfield, Kling and Seedance.",
-    items: [
-      "Water Dispenser: Pidgin DTC Ad",
-      "Water Dispenser: English DTC Ad",
-      "ClickUp Brain: DTC Ad",
-      "Faceted: AI UGC Ad",
-      "Vitamin C Serum: AI UGC Ad",
-      "Greens Powder: AI UGC Ad",
-      "Oversized Hoodie: AI UGC Ad",
-      "ClickUp: UGC Ad",
-      "BlossomUp: UGC Ad",
-      "NALA Ghana: Animated Ad",
-      "NALA Nigeria: Animated Ad",
-      "Not Again!",
-      "Making of a Nala Ad: Breakdown Reel"
-    ]
-  }
-};
