@@ -219,12 +219,10 @@ footer small{color:var(--foot-muted)}
   .tile{min-height:280px}
   .sheet,.sheet.tall{grid-template-columns:1fr}
   .sheet.tall .player video{height:auto;max-height:62vh;width:100%}
-  .nav{position:static}
-  .nav .wrap{grid-template-columns:1fr auto;gap:10px 12px}
+  .nav .wrap{grid-template-columns:1fr auto;gap:8px 12px}
   .nav .logo{grid-column:1;grid-row:1}
   .nav .theme-toggle{grid-column:2;grid-row:1}
-  .nav ul{grid-column:1 / -1;grid-row:2;justify-content:flex-start;flex-wrap:wrap;overflow:visible;gap:6px}
-  .nav li a{padding:7px 12px;font-size:.88rem;border-color:var(--line)}
+  .nav ul{grid-column:1 / -1;grid-row:2;justify-content:flex-start}
   section{padding:54px 0}
 }
 @media(prefers-reduced-motion:reduce){

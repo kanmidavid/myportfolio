@@ -237,6 +237,17 @@ window.PROJECTS = [
   /* ========================== AI UGC ========================== */
   {
     cat: "aiugc",
+    title: "Thinbi NAD+: Test Edit",
+    client: "Thinbi (test edit)",
+    year: "2026",
+    role: "Video editor (test edit)",
+    tools: ["CapCut"],
+    video: "assets/videos/thinbi-nad-ugc.mp4",
+    poster: "",
+    brief: "A test edit for Thinbi, a supplement brand, built around its NAD+ capsule: a daily capsule that combines resveratrol and urolithin A with 12 actives in total, positioned around cellular energy and mitochondrial support. Cut in a native, creator-style format with a strong opening hook, captions and tight pacing so the product's key points land inside a single scroll."
+  },
+  {
+    cat: "aiugc",
     title: "Green Powder: AI UGC Ad",
     client: "Spec edit",
     year: "2026",
@@ -291,16 +302,5 @@ window.PROJECTS = [
     video: "assets/videos/clickup-dtc.mp4",
     poster: "",
     brief: "A spec product-led ad for ClickUp's AI agent, which helps draft spreadsheets, organise processes and write reports so teams spend less time on busywork. Edited to put the benefit up front, show the product in action and end on a clear call to action, made as a test edit."
-  },
-  {
-    cat: "dtc",
-    title: "Thinbi NAD+: Test Edit",
-    client: "Thinbi (test edit)",
-    year: "2026",
-    role: "Video editor (test edit)",
-    tools: ["CapCut"],
-    video: "assets/videos/thinbi-nad-ugc.mp4",
-    poster: "",
-    brief: "A test edit for Thinbi, a supplement brand, built around its NAD+ capsule: a daily capsule that combines resveratrol and urolithin A with 12 actives in total, positioned around cellular energy and mitochondrial support. Cut in a native, creator-style format with a strong opening hook, captions and tight pacing so the product's key points land inside a single scroll."
   }
 ];

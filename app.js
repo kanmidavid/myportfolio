@@ -62,9 +62,6 @@
     </div>`;
     document.getElementById("theme-toggle").addEventListener("click", () => setTheme(root.dataset.theme === "dark" ? "light" : "dark", true));
     setTheme(root.dataset.theme, false);
-    AVAIL().then(({ by }) => {
-      nav.querySelectorAll("li[data-cat]").forEach((li) => { if (!by[li.dataset.cat].length && li.dataset.cat !== page) li.hidden = true; });
-    });
   }
 
   /* footer */
@@ -131,14 +128,14 @@
     const tiles = document.getElementById("tiles");
     if (tiles) {
       AVAIL().then(({ by }) => {
-        tiles.innerHTML = Object.entries(C).filter(([k]) => by[k].length).map(([k, c]) => {
+        tiles.innerHTML = Object.entries(C).map(([k, c]) => {
           const first = by[k][0];
           const n = by[k].length;
           return `<a class="tile" href="${c.page}" data-cat="${k}">
             <div class="bg"></div>
-            <video muted loop playsinline preload="metadata" src="${esc(first.video)}#t=0.5" onerror="this.remove()"></video>
+            ${first ? `<video muted loop playsinline preload="metadata" src="${esc(first.video)}#t=0.5" onerror="this.remove()"></video>` : ""}
             <span class="num mono">${c.num}</span>
-            <span class="count mono">${n} ${n === 1 ? "video" : "videos"}</span>
+            ${n ? `<span class="count mono">${n} ${n === 1 ? "video" : "videos"}</span>` : ""}
             <h3>${c.title}</h3><p>${c.blurb}</p><span class="go">Watch the work →</span>
           </a>`;
         }).join("");
@@ -191,7 +188,7 @@
       });
 
       const other = document.getElementById("other");
-      if (other) other.innerHTML = Object.entries(C).filter(([k]) => k !== page && by[k].length)
+      if (other) other.innerHTML = Object.entries(C).filter(([k]) => k !== page)
         .map(([, o]) => `<a class="btn" href="${o.page}">${o.title} →</a>`).join("");
     });
   }
