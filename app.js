@@ -7,6 +7,23 @@
   const isTall = (r) => { const [w, h] = (r || "16:9").split(":").map(Number); return h > w; };
   const byCat = (k) => P.filter((p) => p.cat === k);
 
+  /* availability: only show videos whose file really exists (a missing file never shows a placeholder) */
+  const probe = (src) => {
+    if (!src) return Promise.resolve(false);
+    const ctl = typeof AbortController === "function" ? new AbortController() : null;
+    const timer = setTimeout(() => ctl && ctl.abort(), 8000);
+    return fetch(src, { method: "HEAD", cache: "no-store", signal: ctl ? ctl.signal : undefined })
+      .then((r) => { clearTimeout(timer); return r.ok && !/text\/html/i.test(r.headers.get("content-type") || ""); })
+      .catch(() => { clearTimeout(timer); return true; }); // offline / local preview: don't hide anything
+  };
+  let _avail = null;
+  const AVAIL = () => _avail || (_avail = Promise.all(P.map((p) => probe(p.video).then((ok) => [p, ok]))).then((rs) => {
+    const by = {}; Object.keys(C).forEach((k) => (by[k] = []));
+    const ok = new Set();
+    rs.forEach(([p, good]) => { if (good) { by[p.cat].push(p); ok.add(p.title); } });
+    return { by, ok };
+  }));
+
   /* theme: light by default, dark on request, remembered per visitor */
   const root = document.documentElement;
   const KEY = "kd-theme";
@@ -34,7 +51,7 @@
   /* nav */
   const nav = document.getElementById("nav");
   if (nav) {
-    const links = Object.entries(C).map(([k, c]) => `<li><a href="${c.page}" class="${page === k ? "on" : ""}">${c.title}</a></li>`).join("");
+    const links = Object.entries(C).map(([k, c]) => `<li data-cat="${k}"><a href="${c.page}" class="${page === k ? "on" : ""}">${c.title}</a></li>`).join("");
     nav.innerHTML = `<div class="wrap">
       <a class="logo" href="index.html">Kanmi David<b>.</b></a>
       <ul>${links}<li><a class="cta" href="#contact">Contact</a></li></ul>
@@ -45,6 +62,9 @@
     </div>`;
     document.getElementById("theme-toggle").addEventListener("click", () => setTheme(root.dataset.theme === "dark" ? "light" : "dark", true));
     setTheme(root.dataset.theme, false);
+    AVAIL().then(({ by }) => {
+      nav.querySelectorAll("li[data-cat]").forEach((li) => { if (!by[li.dataset.cat].length && li.dataset.cat !== page) li.hidden = true; });
+    });
   }
 
   /* footer */
@@ -110,22 +130,24 @@
 
     const tiles = document.getElementById("tiles");
     if (tiles) {
-      tiles.innerHTML = Object.entries(C).map(([k, c]) => {
-        const first = byCat(k)[0];
-        const n = byCat(k).length;
-        return `<a class="tile" href="${c.page}" data-cat="${k}">
-          <div class="bg"></div>
-          ${first && first.video ? `<video muted loop playsinline preload="metadata" src="${esc(first.video)}#t=0.5" onerror="this.remove()"></video>` : ""}
-          <span class="num mono">${c.num}</span>
-          <span class="count mono">${n} ${n === 1 ? "video" : "videos"}</span>
-          <h3>${c.title}</h3><p>${c.blurb}</p><span class="go">Watch the work →</span>
-        </a>`;
-      }).join("");
-      tiles.querySelectorAll(".tile").forEach((t) => {
-        const v = t.querySelector("video");
-        if (!v) return;
-        t.addEventListener("mouseenter", () => v.play().catch(() => {}));
-        t.addEventListener("mouseleave", () => { v.pause(); });
+      AVAIL().then(({ by }) => {
+        tiles.innerHTML = Object.entries(C).filter(([k]) => by[k].length).map(([k, c]) => {
+          const first = by[k][0];
+          const n = by[k].length;
+          return `<a class="tile" href="${c.page}" data-cat="${k}">
+            <div class="bg"></div>
+            <video muted loop playsinline preload="metadata" src="${esc(first.video)}#t=0.5" onerror="this.remove()"></video>
+            <span class="num mono">${c.num}</span>
+            <span class="count mono">${n} ${n === 1 ? "video" : "videos"}</span>
+            <h3>${c.title}</h3><p>${c.blurb}</p><span class="go">Watch the work →</span>
+          </a>`;
+        }).join("");
+        tiles.querySelectorAll(".tile").forEach((t) => {
+          const v = t.querySelector("video");
+          if (!v) return;
+          t.addEventListener("mouseenter", () => v.play().catch(() => {}));
+          t.addEventListener("mouseleave", () => { v.pause(); });
+        });
       });
     }
 
@@ -140,40 +162,38 @@
   const pick = page === "pick" ? (window.PICKS || {})[body.dataset.pick] : null;
   if (C[page] || pick) {
     const c = C[page];
-    list = pick ? pick.items.map((t) => P.find((p) => p.title === t)).filter(Boolean) : byCat(page);
     document.getElementById("head").innerHTML = pick
       ? `<div class="wrap"><span class="num mono">Selected work</span><h1>${esc(pick.title)}</h1><p>${esc(pick.blurb)}</p></div>`
-      : `<div class="wrap"><span class="num mono">${c.num} / 0${Object.keys(C).length}</span><h1>${c.title}</h1><p>${c.blurb}</p></div>`;
+      : `<div class="wrap"><span class="num mono">${c.num}</span><h1>${c.title}</h1><p>${c.blurb}</p></div>`;
     const grid = document.getElementById("grid");
-    grid.innerHTML = list.length ? list.map((p, i) => `
-      <button class="card" data-i="${i}" aria-label="Play ${esc(p.title)}">
-        <div class="thumb" style="aspect-ratio:${ratioCSS(p.ratio)}">
-          ${p.poster ? `<img src="${esc(p.poster)}" alt="" loading="lazy">` : ""}
-          ${p.video ? `<video muted loop playsinline preload="metadata" src="${esc(p.video)}#t=0.5"></video>` : ""}
-          <div class="ph mono">Video coming<br>soon<br><small style="opacity:.5;font-size:.6rem;word-break:break-all">${esc(p.video)}</small></div>
-          <span class="play">▶</span>
-        </div>
-        <div class="meta"><h3>${esc(p.title)}</h3>
-        <div class="sub">${esc([p.client, p.year].filter(Boolean).join(" · "))}</div></div>
-      </button>`).join("") : `<div class="empty">Nothing here yet. Add projects in data.js.</div>`;
+    AVAIL().then(({ by, ok }) => {
+      list = pick ? pick.items.map((t) => P.find((p) => p.title === t)).filter((p) => p && ok.has(p.title)) : by[page];
+      grid.innerHTML = list.length ? list.map((p, i) => `
+        <button class="card" data-i="${i}" aria-label="Play ${esc(p.title)}">
+          <div class="thumb" style="aspect-ratio:${ratioCSS(p.ratio)}">
+            ${p.poster ? `<img src="${esc(p.poster)}" alt="" loading="lazy">` : ""}
+            <video muted loop playsinline preload="metadata" src="${esc(p.video)}#t=0.5"></video>
+            <span class="play">▶</span>
+          </div>
+          <div class="meta"><h3>${esc(p.title)}</h3>
+          <div class="sub">${esc([p.client, p.year].filter(Boolean).join(" · "))}</div></div>
+        </button>`).join("") : `<div class="empty">New work is being added to this page. Check back soon.</div>`;
 
-    grid.querySelectorAll(".card").forEach((card) => {
-      const thumb = card.querySelector(".thumb");
-      const v = thumb.querySelector("video");
-      if (v) {
-        v.addEventListener("error", () => thumb.classList.add("missing"));
+      grid.querySelectorAll(".card").forEach((card) => {
+        const thumb = card.querySelector(".thumb");
+        const v = thumb.querySelector("video");
         v.addEventListener("loadedmetadata", () => {
           if (v.videoWidth && v.videoHeight) thumb.style.aspectRatio = v.videoWidth + " / " + v.videoHeight;
         });
         card.addEventListener("mouseenter", () => v.play().catch(() => {}));
         card.addEventListener("mouseleave", () => { v.pause(); v.currentTime = 0.5; });
-      } else thumb.classList.add("missing");
-      card.addEventListener("click", () => openModal(+card.dataset.i));
-    });
+        card.addEventListener("click", () => openModal(+card.dataset.i));
+      });
 
-    const other = document.getElementById("other");
-    if (other) other.innerHTML = Object.entries(C).filter(([k]) => k !== page)
-      .map(([, o]) => `<a class="btn" href="${o.page}">${o.title} →</a>`).join("");
+      const other = document.getElementById("other");
+      if (other) other.innerHTML = Object.entries(C).filter(([k]) => k !== page && by[k].length)
+        .map(([, o]) => `<a class="btn" href="${o.page}">${o.title} →</a>`).join("");
+    });
   }
 
   /* ---------- MODAL ---------- */
