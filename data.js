@@ -7,7 +7,7 @@
    2. (Optional) drop a thumbnail into assets/posters/ (jpg/png) and set poster
    3. Copy one block in PROJECTS below, change the fields, save.
 
-   cat must be one of: "talking" | "events" | "ugc" | "dtc" | "motion" | "ai"
+   cat must be one of: "talking" | "events" | "ugc" | "aiugc" | "dtc" | "motion" | "ai"
    Video shape (vertical / landscape) is detected automatically.
    File names must match EXACTLY, including capitals and spelling.
    ============================================================ */
@@ -32,7 +32,7 @@ window.SITE = {
   ],
   stats: [
     { n: "~7", l: "years editing" },
-    { n: "6", l: "specialities, 1 editor" },
+    { n: "7", l: "specialities, 1 editor" },
     { n: "Africa + Global", l: "brands served" }
   ]
 };
@@ -50,16 +50,20 @@ window.CATS = {
     page: "ugc.html", num: "03", title: "UGC Edits",
     blurb: "Creator footage cut for the thumb-stop. Hooks, captions, pacing, proof."
   },
+  aiugc: {
+    page: "ai-ugc.html", num: "04", title: "AI UGC",
+    blurb: "AI creators that look and sound native. Scripted, directed and edited for the scroll."
+  },
   dtc: {
-    page: "dtc.html", num: "04", title: "DTC Videos",
+    page: "dtc.html", num: "05", title: "DTC Videos",
     blurb: "Product-first ads and brand films built to convert on Meta and TikTok."
   },
   motion: {
-    page: "motion.html", num: "05", title: "Motion Design",
+    page: "motion.html", num: "06", title: "Motion Design",
     blurb: "After Effects, Cinema 4D and Blender. Graphics that move on purpose."
   },
   ai: {
-    page: "ai.html", num: "06", title: "AI Videos",
+    page: "ai.html", num: "07", title: "AI Videos",
     blurb: "AI-native, human-directed. Higgsfield, Kling, Seedance and Nano Banana Pro."
   }
 };
@@ -209,17 +213,6 @@ window.PROJECTS = [
   /* ========================== UGC EDITS ========================== */
   {
     cat: "ugc",
-    title: "Thinbi NAD+: UGC Test Edit",
-    client: "Thinbi (test edit)",
-    year: "2026",
-    role: "Video editor (test edit)",
-    tools: ["CapCut"],
-    video: "assets/videos/thinbi-nad-ugc.mp4",
-    poster: "",
-    brief: "A test edit for Thinbi, a supplement brand, built around its NAD+ capsule: a daily capsule that combines resveratrol and urolithin A with 12 actives in total, positioned around cellular energy and mitochondrial support. Cut in a native, creator-style format with a strong opening hook, captions and tight pacing so the product's key points land inside a single scroll."
-  },
-  {
-    cat: "ugc",
     title: "BlossomUp: UGC Ad",
     client: "BlossomUp",
     year: "2026",
@@ -239,6 +232,63 @@ window.PROJECTS = [
     video: "assets/videos/clickup-ugc.mp4",
     poster: "",
     brief: "A spec UGC-style edit for ClickUp, the all-in-one work platform. Built around a clear hook, relatable pacing and on-screen captions, and made as a test edit to show how an everyday-work pain point can be turned into a scroll-stopping short-form ad."
+  },
+
+  /* ========================== AI UGC ========================== */
+  {
+    cat: "aiugc",
+    title: "Thinbi NAD+: Test Edit",
+    client: "Thinbi (test edit)",
+    year: "2026",
+    role: "Video editor (test edit)",
+    tools: ["CapCut"],
+    video: "assets/videos/thinbi-nad-ugc.mp4",
+    poster: "",
+    brief: "A test edit for Thinbi, a supplement brand, built around its NAD+ capsule: a daily capsule that combines resveratrol and urolithin A with 12 actives in total, positioned around cellular energy and mitochondrial support. Cut in a native, creator-style format with a strong opening hook, captions and tight pacing so the product's key points land inside a single scroll."
+  },
+  {
+    cat: "aiugc",
+    title: "Green Powder: AI UGC Ad",
+    client: "Spec edit",
+    year: "2026",
+    role: "AI video creator and editor (spec edit)",
+    tools: ["Higgsfield", "Seedance", "Nano Banana Pro", "CapCut"],
+    video: "assets/videos/greens-powder-aiugc.mp4",
+    poster: "",
+    brief: "A spec AI UGC ad for a greens powder, made as a test edit. An AI-generated creator speaks straight to camera with the product, built around a strong opening hook, bold captions and tight pacing in a native, creator-style format."
+  },
+  {
+    cat: "aiugc",
+    title: "Faceted: AI UGC Ad",
+    client: "Faceted (Kavi Studios venture)",
+    year: "2026",
+    role: "AI video creator and editor (spec edit)",
+    tools: ["Higgsfield", "Seedance", "Nano Banana Pro", "CapCut"],
+    video: "assets/videos/faceted-aiugc.mp4",
+    poster: "",
+    brief: "An AI UGC ad for Faceted, a skincare product that matches people to the right skin type and ingredients. An AI-generated creator talks straight to camera, with a clear hook, captions and tight pacing."
+  },
+  {
+    cat: "aiugc",
+    title: "Hoodie: AI UGC Ad",
+    client: "Spec edit",
+    year: "2026",
+    role: "AI video creator and editor (spec edit)",
+    tools: ["Higgsfield", "Seedance", "Nano Banana Pro", "CapCut"],
+    video: "assets/videos/hoodie-aiugc.mp4",
+    poster: "",
+    brief: "A spec AI UGC ad for a hoodie brand, made as a test edit. An AI-generated creator shows and wears the product in a native, creator-style format with a sharp hook, captions and tight pacing."
+  },
+  {
+    cat: "aiugc",
+    title: "Skincare: AI UGC Ad",
+    client: "Spec edit",
+    year: "2026",
+    role: "AI video creator and editor (spec edit)",
+    tools: ["Higgsfield", "Seedance", "Nano Banana Pro", "CapCut"],
+    video: "assets/videos/skincare-aiugc.mp4",
+    poster: "",
+    brief: "A spec AI UGC ad for a skincare product, made as a test edit. An AI-generated creator speaks to camera with the product in hand, built around a strong hook, bold captions and tight pacing."
   },
 
   /* ========================== DTC VIDEOS ========================== */

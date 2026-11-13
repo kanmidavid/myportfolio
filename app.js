@@ -54,7 +54,7 @@
     const links = Object.entries(C).map(([k, c]) => `<li data-cat="${k}"><a href="${c.page}" class="${page === k ? "on" : ""}">${c.title}</a></li>`).join("");
     nav.innerHTML = `<div class="wrap">
       <a class="logo" href="index.html">Kanmi David<b>.</b></a>
-      <ul>${links}<li><a class="cta" href="#contact">Contact</a></li></ul>
+      <ul>${links}<li><a href="results.html" class="${page === "results" ? "on" : ""}">Results</a></li><li><a class="cta" href="#contact">Contact</a></li></ul>
       <button class="theme-toggle" id="theme-toggle" type="button" aria-pressed="false" aria-label="Switch to dark mode">
         <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5a8.5 8.5 0 1 0 10.7 10.7z"/></svg>
         <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
@@ -138,7 +138,11 @@
             ${n ? `<span class="count mono">${n} ${n === 1 ? "video" : "videos"}</span>` : ""}
             <h3>${c.title}</h3><p>${c.blurb}</p><span class="go">Watch the work →</span>
           </a>`;
-        }).join("");
+        }).join("") + `<a class="tile" href="results.html" data-cat="results">
+            <div class="bg"></div>
+            <span class="num mono">${String(Object.keys(C).length + 1).padStart(2, "0")}</span>
+            <h3>Results</h3><p>The numbers behind the work.</p><span class="go">See the results →</span>
+          </a>`;
         tiles.querySelectorAll(".tile").forEach((t) => {
           const v = t.querySelector("video");
           if (!v) return;
@@ -189,7 +193,7 @@
 
       const other = document.getElementById("other");
       if (other) other.innerHTML = Object.entries(C).filter(([k]) => k !== page)
-        .map(([, o]) => `<a class="btn" href="${o.page}">${o.title} →</a>`).join("");
+        .map(([, o]) => `<a class="btn" href="${o.page}">${o.title} →</a>`).join("") + `<a class="btn" href="results.html">Results →</a>`;
     });
   }
 
